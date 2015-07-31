@@ -22,7 +22,7 @@ end
 bash "run phpenv-install" do
   code <<-_EOH_
     export PHPENV_ROOT=/opt/phpenv
-    cd /tmp/phpenv-install
+    cd /tmp/phpenv-install/bin
     ./phpenv-install.sh
   _EOH_
   not_if { File.exist?("/opt/phpenv/shims/php") }
