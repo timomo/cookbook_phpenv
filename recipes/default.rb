@@ -64,6 +64,7 @@ end
   lemon
   re2c
   libtidy
+  bison
 ).each do |name|
   yum_package name do
     action :upgrade
