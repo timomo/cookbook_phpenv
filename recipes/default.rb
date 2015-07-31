@@ -27,3 +27,10 @@ bash "run phpenv-install" do
   _EOH_
   not_if { File.exist?("/opt/phpenv/shims/php") }
 end
+
+template "/etc/profile.d/phpenv.sh" do
+  source "profile.d/phpenv.sh.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+end
