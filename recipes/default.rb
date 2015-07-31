@@ -10,7 +10,8 @@ group "phpenv" do
   action :create
 end
 
-git "/opt/phpenv" do
+# create temp git repo
+git "/tmp/phpenv-install" do
   repository "https://github.com/CHH/phpenv.git"
   revision "master"
   user "root"
@@ -18,31 +19,11 @@ git "/opt/phpenv" do
   action :sync
 end
 
-directory "/opt/phpenv/plugins" do
-  action :create
-end
-
-git "/opt/phpenv/plugins/ruby-build" do
-  repository "https://github.com/php-build/php-build.git"
-  revision "master"
-  user "root"
-  group "phpenv"
-  action :sync
-end
-
-template "/etc/profile.d/phpenv.sh" do
-  source "profile.d/phpenv.sh.erb"
-  owner "root"
-  group "root"
-  mode "0644"
-end
-
-# install php 5.4.16
-bash "install php" do
+bash "run phpenv-install" do
   code <<-_EOH_
-    source /etc/profile.d/phpenv.sh
-    phpenv install 5.4.16
-    phpenv global 5.4.16
+    export PHPENV_ROOT=/opt/phpenv
+    cd /tmp/phpenv-install
+    ./phpenv-install.sh
   _EOH_
-  not_if { File.exist?("/opt/phpenv/shims/ruby") }
+  not_if { File.exist?("/opt/phpenv/shims/php") }
 end
