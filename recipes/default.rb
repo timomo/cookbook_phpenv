@@ -36,6 +36,7 @@ template "/etc/profile.d/phpenv.sh" do
 end
 
 directory "/tmp/phpenv-install" do
+  recursive true
   action :delete
 end
 
