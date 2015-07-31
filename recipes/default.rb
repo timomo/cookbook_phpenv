@@ -63,6 +63,7 @@ end
   libxml2
   lemon
   re2c
+  libtidy
 ).each do |name|
   yum_package name do
     action :upgrade
