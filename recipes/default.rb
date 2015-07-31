@@ -70,3 +70,13 @@ end
     action :upgrade
   end
 end
+
+# install php 5.10.1
+bash "install perl" do
+  code <<-_EOH_
+    source /etc/profile.d/phpenv.sh
+    phpenv install 5.4.43
+    phpenv global 5.4.43
+  _EOH_
+  not_if { File.exist?("/opt/phpenv/shims/php") }
+end
