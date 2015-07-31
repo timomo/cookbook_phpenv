@@ -34,3 +34,15 @@ template "/etc/profile.d/phpenv.sh" do
   group "root"
   mode "0644"
 end
+
+directory "/tmp/phpenv-install" do
+  action :delete
+end
+
+git "/opt/phpenv/plugins/php-build" do
+  repository "https://github.com/php-build/php-build.git"
+  revision "master"
+  user "root"
+  group "phpenv"
+  action :sync
+end
