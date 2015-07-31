@@ -53,20 +53,20 @@ git "/opt/phpenv/plugins/php-build" do
 end
 
 %w(
-  libevent
-  libjpeg
-  libpng
+  libevent-devel
+  libjpeg-devel
+  libpng-devel
   mcrypt
   libtool
-  openssl
+  openssl-devel
   autoconf
-  libxml2
+  libxml2-devel
   lemon
   re2c
-  libtidy
-  bison
+  libtidy-devel
+  bison-devel
 ).each do |name|
-  yum_package "#{name}-devel" do
+  yum_package name do
     action :upgrade
   end
 end
