@@ -40,6 +40,10 @@ directory "/tmp/phpenv-install" do
   action :delete
 end
 
+directory "/opt/phpenv/plugins" do
+  action :create
+end
+
 git "/opt/phpenv/plugins/php-build" do
   repository "https://github.com/php-build/php-build.git"
   revision "master"
