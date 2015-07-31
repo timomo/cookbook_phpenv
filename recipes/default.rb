@@ -11,7 +11,7 @@ group "phpenv" do
 end
 
 git "/opt/phpenv" do
-  repository "https://github.com/sstephenson/phpenv.git"
+  repository "https://github.com/CHH/phpenv.git"
   revision "master"
   user "root"
   group "phpenv"
@@ -23,7 +23,7 @@ directory "/opt/phpenv/plugins" do
 end
 
 git "/opt/phpenv/plugins/ruby-build" do
-  repository "https://github.com/sstephenson/ruby-build.git"
+  repository "https://github.com/php-build/php-build.git"
   revision "master"
   user "root"
   group "phpenv"
