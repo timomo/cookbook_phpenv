@@ -25,7 +25,7 @@ bash "run phpenv-install" do
     cd /tmp/phpenv-install/bin
     ./phpenv-install.sh
   _EOH_
-  not_if { File.exist?("/opt/phpenv/shims/php") }
+  not_if { File.exist?("/opt/phpenv/bin/phpenv") }
 end
 
 template "/etc/profile.d/phpenv.sh" do
