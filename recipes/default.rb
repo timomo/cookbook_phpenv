@@ -62,13 +62,19 @@ end
   autoconf
   libxml2-devel
   lemon
-  re2c
   libtidy-devel
   bison-devel
+  libcurl-devel
+  libxslt-devel
 ).each do |name|
   yum_package name do
     action :upgrade
   end
+end
+
+yum_package "re2c" do
+  action :upgrade
+  only_if "yum search re2c | egrep -q '^re2c'"
 end
 
 # install php 5.4.43
