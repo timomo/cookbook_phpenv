@@ -66,7 +66,7 @@ end
   libtidy
   bison
 ).each do |name|
-  yum_package name do
+  yum_package "#{name}-devel" do
     action :upgrade
   end
 end
