@@ -51,3 +51,20 @@ git "/opt/phpenv/plugins/php-build" do
   group "phpenv"
   action :sync
 end
+
+%w(
+  libevent
+  libjpeg
+  libpng
+  mcrypt
+  libtool
+  openssl
+  autoconf
+  libxml2
+  lemon
+  re2c
+).each do |name|
+  yum_package name do
+    action :upgrade
+  end
+end
