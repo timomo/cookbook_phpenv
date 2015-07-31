@@ -56,7 +56,7 @@ end
   libevent-devel
   libjpeg-devel
   libpng-devel
-  mcrypt
+  libmcrypt-devel
   libtool
   openssl-devel
   autoconf
