@@ -71,8 +71,8 @@ end
   end
 end
 
-# install php 5.10.1
-bash "install perl" do
+# install php 5.4.43
+bash "install php" do
   code <<-_EOH_
     source /etc/profile.d/phpenv.sh
     phpenv install 5.4.43
