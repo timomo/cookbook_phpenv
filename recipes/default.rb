@@ -84,7 +84,6 @@ case node[:platform]
         autoconf
         libxml2-devel
         lemon
-        libtidy-devel
         bison-devel
         libcurl-devel
         libxslt-devel
