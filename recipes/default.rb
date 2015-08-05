@@ -52,24 +52,49 @@ git "/opt/phpenv/plugins/php-build" do
   action :sync
 end
 
-%w(
-  libevent-devel
-  libjpeg-devel
-  libpng-devel
-  libmcrypt-devel
-  libtool
-  openssl-devel
-  autoconf
-  libxml2-devel
-  lemon
-  libtidy-devel
-  bison-devel
-  libcurl-devel
-  libxslt-devel
-).each do |name|
-  yum_package name do
-    action :upgrade
-  end
+case node[:platform]
+  when "centos" then
+    if node[:platform_version].to_i == 6 then
+      %w(
+        libevent-devel
+        libjpeg-devel
+        libpng-devel
+        libmcrypt-devel
+        libtool
+        openssl-devel
+        autoconf
+        libxml2-devel
+        lemon
+        libtidy-devel
+        bison-devel
+        libcurl-devel
+        libxslt-devel
+       ).each do |name|
+        yum_package name do
+          action :upgrade
+        end
+      end
+    else
+      %w(
+        libevent-devel
+        libjpeg-devel
+        libpng-devel
+        libtool
+        openssl-devel
+        autoconf
+        libxml2-devel
+        lemon
+        libtidy-devel
+        bison-devel
+        libcurl-devel
+        libxslt-devel
+       ).each do |name|
+        yum_package name do
+          action :upgrade
+        end
+      end
+    end
+  # end when "centos"
 end
 
 yum_package "re2c" do
